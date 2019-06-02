@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bananas</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="res/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="res/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="res/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="res/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="res/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="res/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="res/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="res/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="res/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="res/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="res/favicons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="res/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="res/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="res/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="res/favicons/manifest.json">
+    <link rel="mask-icon" href="res/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="res/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a300">
+    <meta name="msapplication-TileImage" content="res/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="res/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="src/anims.css">
+    <script src="src/game.js" type="application/javascript"></script>
+    <script src="src/shopitem.js" type="application/javascript"></script>
+    <script src="src/main.js" type="application/javascript"></script>
+    <style>
+        body,html {
+            height: 100%;
+        }
+        
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -55px;
+        }
+        
+        #push, #footer {
+            height: 55px;   
+        }
+        
+        #header {
+            text-align: center;
+            background-color: #efef0f;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+        
+        #footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+            margin-top: 50px;
+        }
+        
+        #main {
+            height: 100%;
+            text-align: center;
+        }
+        
+        .shop {
+            overflow: auto;
+            /*height: 30em;*/
+            border-style: solid;
+            border-color: lightgray;
+            border-radius: 15px;
+            background-color: lightgray;
+            padding: 5px 8px;
+            margin-bottom: 20px;
+        }
+        
+        .shopItem {
+            border-style: solid;
+            border-color: darkgray;
+            border-radius: 5px;
+            background-color: darkgray;
+            padding: 2px 2px;
+            margin: 5px 0px;
+        }
+        
+        #main_row {
+            height: 100%;  
+        }
+        
+        #shop_container {
+            height: 100%;
+        }
+        
+        #bananText {
+            position: absolute;
+            top: 35%;
+            opacity: 0;
+            width: 100%;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        #imageContainer {
+            position: relative;
+        }
+        
+        #imageContainer img {
+            width: 100%;
+            height: auto;
+        }
+        
+        #resetButton {
+            float: right;
+        }
+    </style>
+</head>
+    
+<body onload="main()">
+    <div id="wrap">
+    <div class="jumbotron" id="header">
+        <h1>Bananas 2.0</h1>
+    </div>
+    <div class="container" id="main">
+        <div class="row" id="main_row">
+            <div class="col-md-3">
+                <h2>Information</h2>
+                <h4><span id="bananasText">0</span> bananas</h4>
+                <h4><span id="bpsText">0</span> bps</h4>
+                <h4><span id="bpcText">0</span> bpc</h4>
+                <h4><span id="bdText">0</span> banan dollars</h4>
+                <br><hr>
+                <h4><span><button id="buyBD" class="btn btn-primary">Buy</button> <input id="numBD" value="1" style="width:30%" type="number" min="1"> BD</span></h4>
+            </div>
+            <div class="col-md-6">
+                <h2>The Mighty Banana</h2>
+                <div id="imageContainer">
+                    <span>
+                        <h2 id="bananText">+1</h2>
+                        <img id="bananaImg" src="res/bananas.svg">
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3" id="shop_container">
+                <h2>Shop</h2>
+                <div class="shop" id="upgrades_shop">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div id="footer">
+        <div class="container-fluid">
+            <span>&copy; Aleksander B. Birkeland 2016 
+            <button id="resetButton" class="btn btn-danger">Reset!</button>
+            </span>
+        </div>
+    </div>
+</body>
+    
+</html>
